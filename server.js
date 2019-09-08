@@ -7,4 +7,6 @@ app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, "static", "index
 
 app.use(express.static("static"))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || PORT, () => {
+    console.log("Server started", PORT);
+  });
