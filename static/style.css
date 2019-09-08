@@ -1,0 +1,24 @@
+body {
+    font-family: Arial,Helvetica Neue,Helvetica,sans-serif; 
+}
+header {
+    background-color: beige;
+}
+button {
+    float: right;
+    margin: 1%;
+    border-radius: 7px;
+}
+li {
+    display: inline;
+    margin: 5%;
+}
+ol {
+    display: inline;
+    margin: 5%;
+    font-size: 120%;
+}
+#bike {
+    width: 18%;
+    height: 18%;
+}
