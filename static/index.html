@@ -6,41 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Store</title>
     <link rel="stylesheet" href="style.css">
+    <script src="utils.js"></script>
+    <script src="itemlist.js"></script>
 </head>
 <body>
-    <div class="header">
-    	<a href="index.html">
-            <img class="header__logo" src="pics/logo.png" />
-  		</a>
-      <div class="header__buttons">
-        <button>Login/Signup</button>
-        <button>Cart</button>
+
+  <div class="header">
+    <a href="index.html">
+          <img class="header__logo" src="pics/logo.png" />
+    </a>
+
+    <div class="header__buttons">
+      <button>Login/Signup</button>
+      <button>Cart</button>
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    Select product category:
+    <select id="category-dropdown" name="category">
+      <option value="phones" selected>Phones</option>
+      <option value="computers">Computers</option>
+    </select>
+    </div>
+
+  <div class="content" id="item-list">
+
+  </div>
+
+  <!-- <div class="content">
+    <a href="item.html?title=KTM Duke 390&cost=4990€&src=pics/duke390.png">
+          <div class="item">
+              <img src="pics/duke390.png">
+              <div class="item__title">KTM Duke 390</div>
+              <div class="item__price">4990€</div>
+          </div>
+    </a>
+
+    <a href="item.html?title=Yamaha MT-03&cost=5455€&src=pics/mt-03.png">
+      <div class="item">
+        <img src="pics/mt-03.png">
+        <div class="item__title">Yamaha MT-03</div>
+        <div class="item__price">5455€</div>
       </div>
-    </div>
-    <div class="content">
-    	<a href="item.html?title=KTM Duke 390&cost=4990€&src=pics/duke390.png">
-            <div class="item">
-                <img src="pics/duke390.png">
-                <div class="item__title">KTM Duke 390</div>
-                <div class="item__price">4990€</div>
-            </div>
-   		</a>
+    </a>
 
-    	<a href="item.html?title=Yamaha MT-03&cost=5455€&src=pics/mt-03.png">
-	    	<div class="item">
-	    		<img src="pics/mt-03.png">
-	    		<div class="item__title">Yamaha MT-03</div>
-	    		<div class="item__price">5455€</div>
-	    	</div>
-    	</a>
-
-    	<a href="item.html?title=Kawasaki Ninja 400&cost=5590€&src=pics/ninja400.png">
-            <div class="item">
-                <img src="pics/ninja400.png">
-                <div class="item__title">Kawasaki Ninja 400</div>
-                <div class="item__price">5590€</div>
-            </div>
-        </a>
-    </div>
-  </body>
+    <a href="item.html?title=Kawasaki Ninja 400&cost=5590€&src=pics/ninja400.png">
+          <div class="item">
+              <img src="pics/ninja400.png">
+              <div class="item__title">Kawasaki Ninja 400</div>
+              <div class="item__price">5590€</div>
+          </div>
+      </a>
+  </div> -->
+  
+</body>
 </html>

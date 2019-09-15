@@ -18,7 +18,7 @@ const x = window.location;
     titleElement.textContent = title;
     titleElement.className = "item__title";
 
-    const description = "This is a motorcycle"
+    const description = "=)"
 
     const textElement = document.createElement("p");
     textElement.textContent = description;
