@@ -1,10 +1,13 @@
-const x = window.location;
+//console.log("itempage loaded");
+
+function setup(){
+    const x = window.location;
     console.log(x);
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get("title");
     const cost = urlParams.get("cost");
     const src = urlParams.get("src");
-    console.log(title, cost, src);
+    //console.log(title, cost, src);
     //alert(`Title: ${title} \nCost: ${cost} \nPath: ${src}`)
 
     const container = document.createElement("div");
@@ -33,9 +36,11 @@ const x = window.location;
     container.append(textElement);
     container.append(costElement);
 
-    window.addEventListener("load", () =>{
-
     const app = document.getElementById("item-body");
-
+    if (!app) return;
     app.append(container);
-});
+}
+
+module.exports = {
+    setup,
+}
