@@ -1,24 +1,15 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-const item = [
-    {
-        name: "item1",
-        cost: 200
-    },
-    {
-        name: "item2",
-        cost: 300
-    }
-];
-
-const ItemList = () => {
+const ItemList = (props) => {
     return (
-    <div>
+    <div className="content">
         {
-        items.map( item => {
+        props.items.map( item => {
             return <Item 
-            name={item.name}
-            cost={item.cost}
+            imgSrc={item.imgSrc}
+            title={item.title}
+            price={item.price}
             />
         })
         }
@@ -27,7 +18,15 @@ const ItemList = () => {
 };
 
 const Item = (props) => {
-    return <div>{props.name} {props.cost}</div>
+    return (
+        <Link to={"/item"}>
+        <div className="item">
+            <img src={props.imgSrc}/>
+            <div className="item__title">{props.title}</div>
+            <div className="item__price">{props.price}</div>
+        </div>
+        </Link>
+    )
 };
 
 export default ItemList;

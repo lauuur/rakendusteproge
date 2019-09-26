@@ -1,21 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./Header.jsx";
-import ItemList from "./ItemList.jsx";
+import HomePage from "./HomePage.jsx";
+import ItemPage from "./ItemPage.jsx";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 const root = document.getElementById("app");
 
-
-const App = () => {
-    return (
-        <>
-        <Header/>
-        <ItemList/>
-        </>
-    )
-};
-
 ReactDOM.render(
-    <App/>,
-    root
-  );
+  <BrowserRouter>
+    <Route path="/" exact component={HomePage} />
+    <Route path="/item" exact component={ItemPage} />
+  </BrowserRouter>,
+  root
+);
