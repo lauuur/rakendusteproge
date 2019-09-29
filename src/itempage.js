@@ -1,15 +1,9 @@
-//console.log("itempage loaded");
-
 function setup(){
-    const x = window.location;
-    console.log(x);
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get("title");
     const cost = urlParams.get("cost");
     const src = urlParams.get("src");
-    //console.log(title, cost, src);
-    //alert(`Title: ${title} \nCost: ${cost} \nPath: ${src}`)
-
+    
     const container = document.createElement("div");
     container.className = "itemContainer";
 
@@ -21,7 +15,7 @@ function setup(){
     titleElement.textContent = title;
     titleElement.className = "item__title";
 
-    const description = "=)"
+    const description = "=)";
 
     const textElement = document.createElement("p");
     textElement.textContent = description;
@@ -43,4 +37,4 @@ function setup(){
 
 module.exports = {
     setup,
-}
+};

@@ -1,4 +1,3 @@
-//console.log("utils loaded");
 function createItemElement(item){
     const anchor = document.createElement("a");
     anchor.href = `item.html?title=${item.title}&cost=${item.price}&src=${item.imgSrc}`;
@@ -27,4 +26,4 @@ function createItemElement(item){
 
 module.exports = {
     createItemElement,
-}
+};

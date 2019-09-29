@@ -31,10 +31,12 @@ class HomePage extends React.PureComponent{
         return (
             <>
             <Header/>
+            <div className="category-wrapper">
             <select onChange={this.handleChange}>
                 <option value="phones">Phones</option>
                 <option value="computers">Computers</option>
             </select>
+            </div>
             <ItemList items={this.state.items}/>
             </>
         )
