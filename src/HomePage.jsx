@@ -9,20 +9,35 @@ class HomePage extends React.PureComponent{
         super(props);
         this.state = {
             items: phones,
-        }
+        };
     }
+
+    componentDidMount(){
+        fetch("http://localhost:9000/api/item")
+        .then(res =>{
+            console.log("res", res);
+            return res.json();
+        })
+        .then(items => {
+            console.log("items", items);
+        })
+        .catch(err => {
+            console.log("err", err);
+        });
+    }
+
     handleChange = (event) => {
         switch(event.target.value){
             case "phones":{
                 this.setState({
                     items: phones,
-                })
+                });
                 break;
             }
             case "computers":{
                 this.setState({
                     items: computers,
-                })
+                });
                 break;
             }
         }
@@ -39,7 +54,7 @@ class HomePage extends React.PureComponent{
             </div>
             <ItemList items={this.state.items}/>
             </>
-        )
+        );
     }
 }
 

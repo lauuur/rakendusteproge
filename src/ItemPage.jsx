@@ -4,7 +4,7 @@ import {phones} from "./mydatabase.js";
 
 class ItemPage extends React.PureComponent{
     render(){
-        const item = phones[0]
+        const item = phones[0];
         return (
             <>
             <Header/>
@@ -14,7 +14,7 @@ class ItemPage extends React.PureComponent{
                 <div className={"item__price"}>{item.price}</div>
             </div>
             </>
-        )
+        );
     }
 }
 

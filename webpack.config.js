@@ -20,15 +20,29 @@ module.exports = {
     ],
   module: {
     rules: [
-      { test: /\.(js|jsx)$/,
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader' }
+        loader: 'eslint-loader',
+        options: {
+          failOnError: false,
+        },
+      },
+      { 
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader' 
+      }
     ]
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     compress: true,
-    port: 9000
+    port: 9000,
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   }
 };
