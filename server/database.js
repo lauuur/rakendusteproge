@@ -14,8 +14,8 @@ const getItems = () => {
     computers.forEach((computer, index)=>{
         items.push({
             ...computer,
-            id: "computer-"+index,
-            category: "computer"
+            id: "computers-"+index,
+            category: "computers"
         })
     });
     return items;

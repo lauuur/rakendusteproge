@@ -5,7 +5,7 @@
   "main": "lesson1.js",
   "scripts": {
     "build": "webpack",
-    "start": "node server.js",
+    "start": "node server/server.js",
     "start:dev": "webpack-dev-server --open --mode=\"development\""
   },
   "repository": {
