@@ -1,4 +1,15 @@
 # Rakenduste Programmeerimine 2019
 https://lauuur.herokuapp.com
 
-<img src="https://user-images.githubusercontent.com/43137916/65706742-c7e50480-e093-11e9-8b8b-397c10f7fb5a.jpg" width="400">
+## Funktsionaalsed nõuded:
+* Esilehel toodete kuvamine
+* Toodete kategooriate valimine
+* Toodete hinna järgi sorteerimine
+* Toodete lisamine ostukorvi
+* Toodete eemaldamine ostukorvist
+* Toodete ostmine
+* Kasutaja registreerimine
+* Kasutaja kustutamine
+* Kasutaja sisselogimine
+* Kasutaja väljalogimine
+* ...
