@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import "./itemlist.css";
 
 const ItemList = (props) => {
     return (
-    <div className="content">
+    <div className="items-layout">
         {
         props.items.map( item => {
             return <Item 
@@ -26,15 +27,25 @@ ItemList.propTypes = {
 
 const Item = (props) => {
     return (
-        <Link to={`/items/${props.id}`}>
-        <div className="item">
+        <Link to={`/items/${props.id}`} className="item">
+        <div className="item__img-wrapper">
             <img src={props.imgSrc}/>
-            <div className="item__title">{props.title}</div>
-            <div className="item__price">{props.price}</div>
         </div>
+            <div className="item__title">{props.title}</div>
+            <div className="item__footer">
+                <div className="item__price">${props.price}</div>
+                <div className="item__reviews">
+                    {`(${getRandomIntInclusive(0,1000)} reviews)`}</div>
+            </div>
         </Link>
     );
 };
+
+function getRandomIntInclusive(min,max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max-min+1)) + min;
+}
 
 Item.propTypes = {
     id: PropTypes.string.isRequired,

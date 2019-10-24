@@ -20,15 +20,15 @@ module.exports = {
     ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          failOnError: false,
-        },
-      },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     failOnError: false,
+      //   },
+      // },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],

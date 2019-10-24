@@ -2,15 +2,19 @@ import React from "react";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import Checkbox from "./Checkbox.jsx";
+import SortDropdown from "./SortDropdown.jsx";
+import PropTypes from "prop-types";
+import "./homepage.css";
 
 class HomePage extends React.PureComponent{
 
     constructor(props){
         super(props);
         this.state = {
+            sortDirection: -1,
             items: [],
             allCategories: ["phones", "computers"],
-            selectedCategory: ["phones"],
+            selectedCategories: ["phones"],
         };
     }
 
@@ -35,11 +39,17 @@ class HomePage extends React.PureComponent{
         });
     }
 
+    handleSortDropdown = (event) => {
+        this.setState({
+            sortDirection: parseInt(event.target.value),
+        });
+    }
+
     handleDropdown = (event) => {
-        console.log(event.target.value, event.target.name);
+        // console.log(event.target.value, event.target.name);
         if(this.isSelected(event.target.name)){
             const clone = this.state.selectedCategories.slice();
-            console.log("targetname:", event.target.name);
+            // console.log("targetname:", event.target.name);
             const index = this.state.selectedCategories.indexOf(event.target.name);
             clone.splice(index, 1);
             this.setState({
@@ -54,32 +64,70 @@ class HomePage extends React.PureComponent{
     }
 
     getVisibleItems = () => {
-        return this.state.items.filter(item => item.category === this.state.selectedCategory);
+        return this.state.items
+        .filter(item => this.isSelected(item.category))
+        .sort((a, b) => {
+            switch (this.state.sortDirection) {
+                case -1: return b.price -a.price;
+                case 1: return a.price -b.price;
+            }
+        });
     }
 
     isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
 
     render(){
-        console.log("this.state", this.state);
+        const items = this.getVisibleItems();
         return (
             <>
-            <Header/>
-            {
-                this.state.allCategories.map(categoryName => {
-                    return (
-                        <Checkbox
-                        key={categoryName}
-                        name={categoryName}
-                        onChange={this.handleDropdown}
-                        checked={this.isSelected(categoryName)}
-                        />
-                    );
-                })
-            }
-            <ItemList items={this.getVisibleItems()}/>
+            <div className="body-wrapper">
+                <Header/>
+                <div className="filters-wrapper">
+                    <ItemFilters
+                    allCategories={this.state.allCategories}
+                    handleDropdown={this.handleDropdown}
+                    isSelected={this.isSelected}
+                    />
+                </div>
+                <div className="items-header-wrapper">
+                    <div>
+                        Found: {items.length} {" "}
+                        {this.state.selectedCategories.join(", ")}
+                    </div>
+                    <SortDropdown
+                    direction={this.state.sortDirection}
+                    onChange={this.handleSortDropdown}/>
+                </div>
+                <ItemList items={items}/>
+            </div>
             </>
         );
     }
 }
+
+const ItemFilters = ({allCategories, handleDropdown, isSelected}) => {
+    return (
+        <>
+        {
+            allCategories.map(categoryName => {
+                return (
+                    <Checkbox
+                    key={categoryName}
+                    name={categoryName}
+                    onChange={handleDropdown}
+                    checked={isSelected(categoryName)}
+                    />
+                );
+            })
+        }
+        </>
+    );
+};
+
+ItemFilters.propTypes = {
+    allCategories: PropTypes.array.isRequired,
+    handleDropdown: PropTypes.func.isRequired,
+    isSelected: PropTypes.func.isRequired,
+};
 
 export default HomePage;
