@@ -10,7 +10,7 @@ const ItemList = (props) => {
         props.items.map( item => {
             return <Item 
             key={item.id}
-            id={item.id}
+            id={item._id}
             imgSrc={item.imgSrc}
             title={item.title}
             price={item.price}
@@ -51,7 +51,7 @@ Item.propTypes = {
     id: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
   };
 
 export default ItemList;

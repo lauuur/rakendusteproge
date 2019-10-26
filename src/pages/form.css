@@ -1,0 +1,88 @@
+/* https://codepen.io/benngagne/pen/nyjda */
+
+/* login div */
+.login {
+    background-color: #eee;
+    width: 420px;
+    height: 375px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+
+.signup {
+    background-color: #eee;
+    width: 420px;
+    height: 455px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+::placeholder{
+    opacity: 0.5;
+}
+
+/* login header */
+h1 {
+    color: #55acee;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 10px;
+}
+
+/* div containing form */
+form, p {
+    text-align: center;
+}
+
+/* username and password fields */
+input:not([type="submit"]) {
+    /* font-family: 'Open Sans', 'sans-serif'; */
+    border: 1px solid #acacac;
+    color: #666;
+    opacity: .7;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 250px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    font-size: 16px;
+}
+
+input:focus:not([type="submit"]) {
+    border: 1px solid #55acee;
+    opacity: 1;
+    width: 320px;
+    outline: none;
+    color: #55acee;
+}
+
+/* submit button */
+input[type="submit"] {
+    padding: 15px 25px;
+    font-size: 22px;
+    width: 420px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    background-color: #55acee;
+    box-shadow: 0px 5px 0px 0px #3C93D5;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+}
+
+input[type="submit"]:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 0px 0px 0px;
+}
+
+input[type="submit"]:hover {
+    background-color: #6FC6FF;
+}
