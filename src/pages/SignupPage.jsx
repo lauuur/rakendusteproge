@@ -1,30 +1,36 @@
 import React from "react";
 import "./form.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class SignupPage extends React.PureComponent{
+
+    static propTypes = {
+        history: PropTypes.object.isRequired,
+    };
 
     constructor(props){
         super(props);
         this.state = {
             email: "",
             password: "",
-            confirmPassword: "",
         };
     }
 
     handleSubmit = (event) =>{
         event.preventDefault();
         console.log("submit", this.state);
-        fetch("/api/users/signup", {
+        fetch("/api/v1/auth/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(this.state),
         })
-        .then(res =>{
-            console.log("response:", res);
+        .then(res => res.json())
+        .then(data =>{
+            console.log("data:", data);
+            this.props.history.push("/login");
         })
         .catch(err =>{
             console.log("error:", err);
@@ -52,11 +58,6 @@ class SignupPage extends React.PureComponent{
                     type="password" 
                     placeholder="Choose a password" 
                     name="password"
-                    onChange={this.handleChange} required/>
-                <input 
-                    type="password" 
-                    placeholder="Confirm password" 
-                    name="confirmPassword"
                     onChange={this.handleChange} required/>
                 <input 
                     type="submit" 
