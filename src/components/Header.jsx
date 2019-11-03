@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 const Header = ({token, user}) => {
     return (
       <div className="header">
-        {token}
       <Link to={"/"}>
         <img className="header__logo" src="./pics/logo.png" />
       </Link>
@@ -30,19 +29,19 @@ Header.propTypes = {
   user: PropTypes.object,
 };
 
-const LoginRegisterIcon = () =>{
+const LoginRegisterIcon = () =>(
   <Link className="header__button" to="/login">
     <img src={profileIcon}/>
-    <div className="header__button-text">Login /<br/>Signup</div>
+    {<div className="header__button-text">Login /<br/>Signup</div>}
   </Link>
-};
+);
 
-const WelcomeIcon = ({user}) =>{
-  <Link className="header__button" to="/login">
+const WelcomeIcon = ({user}) =>(
+  <Link className="header__button" to={`/users/${user._id}`}>
     <img src={profileIcon}/>
-    <div className="header__button-text">Welcome, ${user.email}</div>
+    <div className="header__button-text">Welcome, {user.email}</div>
   </Link>
-};
+);
 
 WelcomeIcon.propTypes = {
   user: PropTypes.object.isRequired,
