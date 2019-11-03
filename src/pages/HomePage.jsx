@@ -44,22 +44,27 @@ class HomePage extends React.PureComponent{
         });
     }
 
-    handleDropdown = (event) => {
-        // console.log(event.target.value, event.target.name);
-        if(this.isSelected(event.target.name)){
-            const clone = this.state.selectedCategories.slice();
-            // console.log("targetname:", event.target.name);
-            const index = this.state.selectedCategories.indexOf(event.target.name);
-            clone.splice(index, 1);
-            this.setState({
-                selectedCategories: clone
-            });
+    handleFilterSelect = (event) => {
+        const categoryName = event.target.name;
+        if(this.isSelected(categoryName)){
+            this.unselectCategory(categoryName);
         }
         else{
-            this.setState({
-                selectedCategories: this.state.selectedCategories.concat([event.target.name])
-            });
+            this.selectCategory(categoryName);
         }
+    }
+
+    unselectCategory = (categoryName) => {
+        const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
+        this.setState({
+            selectedCategories: newArr
+        });
+    }
+    
+    selectCategory = (categoryName) => {
+        this.setState({
+            selectedCategories: this.state.selectedCategories.concat([categoryName])
+        });
     }
 
     getVisibleItems = () => {
@@ -83,7 +88,7 @@ class HomePage extends React.PureComponent{
                 <div className="filters-wrapper">
                     <ItemFilters
                     allCategories={this.state.allCategories}
-                    handleDropdown={this.handleDropdown}
+                    handleDropdown={this.handleFilterSelect}
                     isSelected={this.isSelected}
                     />
                 </div>

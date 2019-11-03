@@ -3,30 +3,32 @@ import {Link} from "react-router-dom";
 import "./header.css";
 import {profileIcon, cartIcon} from "../icons.js";
 import PropTypes from "prop-types";
+import {AuthContext} from "../index.jsx";
 
-const Header = ({token, user}) => {
+const Header = () => {
     return (
-      <div className="header">
-      <Link to={"/"}>
-        <img className="header__logo" src="./pics/logo.png" />
-      </Link>
-      <div className="header__buttons">
-
-        {user.email  && <WelcomeIcon user={user}/>}
-        {!user.email  && <LoginRegisterIcon/>}
-
-        <Link className="header__button" to="/cart">
-        <img src={cartIcon}/>
-        <div className="header__button-text">Cart</div>
-        </Link>
-      </div>
-    </div>
+      <AuthContext.Consumer>
+        {
+          (contextValue) => (
+          <div className="header">
+          <Link to={"/"}>
+            <img className="header__logo" src="./pics/logo.png" />
+          </Link>
+          <div className="header__buttons">
+    
+            {contextValue.user.email  && <WelcomeIcon user={contextValue.user}/>}
+            {!contextValue.user.email  && <LoginRegisterIcon/>}
+    
+            <Link className="header__button" to="/cart">
+            <img src={cartIcon}/>
+            <div className="header__button-text">Cart</div>
+            </Link>
+          </div>
+        </div>
+          )
+        }
+      </AuthContext.Consumer>
     );
-};
-
-Header.propTypes = {
-  token: PropTypes.string,
-  user: PropTypes.object,
 };
 
 const LoginRegisterIcon = () =>(
