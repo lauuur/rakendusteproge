@@ -17,7 +17,7 @@ class ItemPage extends React.PureComponent{
             return res.json();
         })
         .then(item =>{
-            console.log("item", item);
+
             this.setState({
                 ...item
             });
@@ -28,8 +28,6 @@ class ItemPage extends React.PureComponent{
     }
 
     render(){
-        console.log("this.props", this.props);
-        console.log("itemID", this.props.match.params.itemId);
         return (
             <>
             <div className="item">

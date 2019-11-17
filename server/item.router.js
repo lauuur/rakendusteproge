@@ -9,7 +9,6 @@ router.delete("/items/:itemId", (req, res) =>{
         if(err){
             return res.send(500);
         }
-        console.log("delete successful");
         return res.send(204);
     });
 });
@@ -25,11 +24,9 @@ router.post("/items", (req, res) =>{
     const item1 = new Item(props);
     item1.save(err =>{
         if(err){
-            console.log("error: ", err);
             res.send(500);
             return;
         }
-        console.log("item create success");
         res.send(201);
     });
 });

@@ -20,7 +20,6 @@ router.delete("/users", (req, res) =>{
             return handleError(err, res);
         }
         console.log(docs);
-        console.log("user delete success");
         res.send(204);
     });
 });

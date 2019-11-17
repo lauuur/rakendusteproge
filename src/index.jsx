@@ -7,7 +7,11 @@ import Header from "./components/Header.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import store from "./store.js";
+import "./pages/main.css";
+console.log(store);
 
 const authDefaultValue = {
     token: null,
@@ -50,13 +54,9 @@ class App extends React.Component{
             }
           />
           <Route path="/signup" exact component={SignupPage} />
-          <Route path="/users/:userId" 
-          exact 
-          render={(props) =>{
-            return <UserPage {...props} user={this.state.user}/>
-          }}
-          />
-          <Route path="/items/:itemId" exact component={ItemPage} />
+          <Route path="/users/:userId" exact component={UserPage}/>
+          <Route path="/items/:itemId" exact component={ItemPage}/>
+          <Route path="/checkout/cart" exact component={CartPage}/>
           <Route component={NotFound}/>
           </Switch>
           
