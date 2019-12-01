@@ -4,9 +4,6 @@
     margin-top: 10px;
 }
 
-.cart .table {
-}
-
 .cart .row {
     display: flex;
     padding: 20px 0;
@@ -62,19 +59,4 @@
 
 .cart__summary table td {
     padding: 5px 0;
-}
-
-/* .submit-button svg {
-    padding-left: 15px;
-} */
-
-.submit-button {
-    background-color: #55acee;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
 }

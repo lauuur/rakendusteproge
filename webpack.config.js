@@ -8,13 +8,19 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'static/bundle.js'
   },
   plugins: [
       new CleanWebpackPlugin(),
       new CopyPlugin([
         {
-          from: "public"
+          from: "public/index.html",
+        }
+      ]),
+      new CopyPlugin([
+        {
+          from: "public/pics",
+          to: "static/pics"
         }
       ])
     ],
@@ -32,6 +38,17 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(woff|woff2)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options:{
+              outputPath: "static/fonts"
+            }
+          },
+        ],
       },
       { 
         test: /\.(js|jsx)$/,

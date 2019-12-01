@@ -4,7 +4,7 @@ import "./checkbox.css";
 
 const Checkbox = ({name, onChange, checked}) =>(
     <label className="toggleButton">
-        <div>{name}</div>
+        <div className="toggleButtonTitle">{name}</div>
     <input type="checkbox" id={name} name={name} onChange={onChange} checked={checked}/>
     <div>
         <svg viewBox="0 0 44 44">

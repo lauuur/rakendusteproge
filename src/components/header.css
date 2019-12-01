@@ -16,7 +16,7 @@
     height: 60px;
 }
 .header__buttons{
-    width: 150px;
+    /* width: 150px; */
     display: flex;
     justify-content: space-between;
 }
@@ -27,7 +27,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    color: red;
+    color: black;
     transition: all .3s;
     cursor: pointer;
 }
@@ -40,4 +40,14 @@
 .header__button-text{
     padding-left: 5px;
     font-size: 14px;
+    font-weight: 500;
+}
+.badge{
+    position: absolute;
+    padding: 2px 6px;
+    background: black;
+    bottom: 4px;
+    color: white;
+    font-weight: 400;
+    border-radius: 100%;
 }

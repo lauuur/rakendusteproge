@@ -20,18 +20,18 @@ app.use("/api/v1", itemRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 
-app.get("/", (req, res) => res.sendFile(path.resolve(__dirname, "../dist", "index.html")));
+/** For images and bundle.js */
+app.use("/static", express.static("dist/static"));
 
-app.get("/items/*", (req, res) => res.sendFile(path.resolve(__dirname, "../dist", "index.html")));
-
-app.use(express.static("dist"));
+/** For index.html */
+app.use("/*", express.static("dist"));
 
 function listen(){
   app.listen(PORT, () => {
     console.log("Server started", PORT);
     console.log(`http://localhost:${PORT}`);
   });
-};
+}
 
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0-owqqw.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
@@ -56,13 +56,13 @@ function migrate(){
     }
     saveAllItems();
   });
-};
+}
 
 function deleteAllItems(){
   Item.deleteMany({}, (err, doc) =>{
     console.log("err:", err, "doc:", doc);
   });
-};
+}
 
 function saveAllItems(){
   console.log("migrate start");
@@ -75,9 +75,9 @@ function saveAllItems(){
         throw new Error("Error during save");
       }
       console.log("migrate save success");
-    })
-  })
+    });
+  });
   console.log("items: ", items);
-};
+}
 
  

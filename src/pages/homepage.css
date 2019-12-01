@@ -1,5 +1,5 @@
 body {
-    background: lightgrey;
+    background: rgb(243, 241, 241);
 }
 .items-header-wrapper{
     display: flex;
@@ -25,4 +25,9 @@ body {
 }
 .filters-wrapper > .toggleButton{
     margin-right: 25px;
+    font-weight: 400;
+}
+.toggleButtonTitle{
+    margin-left: -7px;
+    margin-bottom: 5px;
 }

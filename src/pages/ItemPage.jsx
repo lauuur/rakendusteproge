@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./itempage.css";
+import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import {addItem} from "../store/store.js";
 
 class ItemPage extends React.PureComponent{
+  
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  };
+
     constructor(props){
         super(props);
         this.state = {};
@@ -12,7 +21,7 @@ class ItemPage extends React.PureComponent{
     }
 
     fetchItem = () => {
-        fetch(`/api/items/${this.props.match.params.itemId}`)
+        fetch(`/api/v1/items/${this.props.match.params.itemId}`)
         .then(res =>{
             return res.json();
         })
@@ -27,21 +36,49 @@ class ItemPage extends React.PureComponent{
         });
     }
 
+    handleBuy = () => {
+      this.props.dispatch(addItem(this.state));
+    };
+  
+
     render(){
         return (
             <>
-            <div className="item">
-                <img src={this.state.imgSrc}/>
-                <div className={"item__title"}>{this.state.title}</div>
-                <div className={"item__price"}>{this.state.price}</div>
-            </div>
+            <div className={"box spacer itemPage"}>
+             <div style={{
+               display: "flex",
+
+             }}>
+               <div className={"itemPage-left"}>
+                 <img src={this.state.imgSrc}/>
+               </div>
+               <div className={"itemPage-content"}>
+                 <div><h2>{this.state.title}</h2></div>
+                 <div>
+                   <p style={{textAlign: "justify"}} className={"text--bold"}>
+                     {this.state.price} €
+                   </p>
+                 </div>
+                 <div>
+                   <p style={{textAlign: "justify"}}>
+                     {loremIpsum}
+                   </p>
+                 </div>
+               </div>
+             </div>
+          <div className={"itemPage-footer"}>
+            <FancyButton onClick={this.handleBuy}>Lisa toode ostukorvi</FancyButton>
+          </div>
+        </div>
             </>
         );
     }
 }
 
+const loremIpsum = "This is an item";
+
 ItemPage.propTypes = {
     match: PropTypes.object.isRequired,
 };
 
-export default ItemPage;
+export default connect()(ItemPage);
