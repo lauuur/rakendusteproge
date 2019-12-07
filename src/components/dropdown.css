@@ -1,5 +1,4 @@
 /* https://codepen.io/silverdrop/pen/msrcE */
-
 .big {
   font-size: 1.2em;
 }
@@ -11,7 +10,7 @@
   margin: 25px;
 }
 .custom-dropdown select {
-  background-color: lightblue;
+  background-color: #55acee;
   color: #fff;
   font-size: inherit;
   padding: .5em;

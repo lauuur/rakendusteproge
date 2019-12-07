@@ -5,7 +5,7 @@ import SortDropdown from "../components/SortDropdown.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import {connect} from "react-redux";
-import {getItems} from "../store/store.js";
+import {getItems} from "../store/actions.js";
 import {ItemProps} from "./CartPage.jsx";
 
 class HomePage extends React.PureComponent{
@@ -81,15 +81,15 @@ class HomePage extends React.PureComponent{
                     handleDropdown={this.handleFilterSelect}
                     isSelected={this.isSelected}
                     />
-                </div>
-                <div className="items-header-wrapper">
-                    <div>
+                    <div className="found-items">
                         Found: {items.length} {" "}
                         {this.state.selectedCategories.join(", ")}
                     </div>
+                    <div className="dropdown-items">
                     <SortDropdown
                     direction={this.state.sortDirection}
                     onChange={this.handleSortDropdown}/>
+                    </div>
                 </div>
                 <ItemList items={items}/>
             </div>

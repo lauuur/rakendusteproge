@@ -18,16 +18,23 @@ body {
 }
 .filters-wrapper{
     border-radius: 5px;
-    padding: 15px;
     background: white;
-    margin: 0px 5px;
+    margin: 25px 5px;
     display: flex;
 }
 .filters-wrapper > .toggleButton{
-    margin-right: 25px;
     font-weight: 400;
 }
 .toggleButtonTitle{
     margin-left: -7px;
     margin-bottom: 5px;
+}
+.found-items{
+    padding: 5px;
+    padding-top: 10px;
+    margin: auto;
+    font-weight: 400;
+}
+.dropdown-items{
+    margin: auto;
 }

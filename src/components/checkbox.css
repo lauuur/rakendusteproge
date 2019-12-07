@@ -6,6 +6,7 @@
     transition: transform 0.14s ease;
     padding: 20px;
     margin-right: 20px;
+    margin-left: 50px;
   }
 .toggleButton:active {
   transform: rotateX(30deg);

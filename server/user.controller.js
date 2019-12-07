@@ -19,7 +19,7 @@ exports.login = (req, res) =>{
     .catch(err =>{
         res.send(401);
     });
-}
+};
 
 exports.signup = (req, res) =>{
     User.signup(req.body)
@@ -29,4 +29,4 @@ exports.signup = (req, res) =>{
     .catch(err =>{
         res.send(500);
     });
-}
+};
