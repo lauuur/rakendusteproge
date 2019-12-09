@@ -5,8 +5,8 @@ import "./dropdown.css";
 const SortDropdown = ({direction, onChange}) => (
 <span className="custom-dropdown big">
     <select value={direction} onChange={onChange}>  
-        <option value={1}>Price: Low to high</option>
-        <option value={-1}>Price: High to low</option>
+        <option value={1}>Hind: Odavamad enne</option>
+        <option value={-1}>Hind: Kallimad enne</option>
     </select>
 </span>
 );

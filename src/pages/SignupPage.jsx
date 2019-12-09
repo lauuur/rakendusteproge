@@ -3,7 +3,7 @@ import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {toast} from "react-toastify";
-
+import * as services from "../services";
 
 class SignupPage extends React.PureComponent{
 
@@ -21,14 +21,7 @@ class SignupPage extends React.PureComponent{
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("/api/v1/auth/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state),
-        })
-        .then(res => res.json())
+        services.signup(this.state)
         .then( () =>{
             this.props.history.push("/login");
             toast.success("Kasutaja on loodud");
@@ -48,25 +41,25 @@ class SignupPage extends React.PureComponent{
     render(){
         return(
             <div className="signup">
-            <h1 id="header">Sign up</h1>
+            <h1 id="header">Kasutaja loomine</h1>
             <form id="form" onSubmit={this.handleSubmit}>
                 <input 
                     type="email" 
-                    placeholder="Email address" 
+                    placeholder="Meiliaadress" 
                     name="email"
                     onChange={this.handleChange}
                     autoComplete="off" required/>
                 <input 
                     type="password" 
-                    placeholder="Choose a password" 
+                    placeholder="Salasõna" 
                     name="password"
                     onChange={this.handleChange} required/>
                 <input 
                     type="submit" 
-                    value="Submit" 
+                    value="Loo kasutaja" 
                     onChange={this.handleChange}/>
             </form>
-                <br/><p>Already have an account? <br/> <Link to="/login">Login here!</Link></p>
+                <br/><p>Juba kasutaja olemas? <br/> <Link to="/login">Logi sisse!</Link></p>
             </div>
         );
     }

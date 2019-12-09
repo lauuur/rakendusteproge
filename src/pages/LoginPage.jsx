@@ -3,9 +3,9 @@ import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import { userUpdate } from "../store/actions";
+import { tokenUpdate, userUpdate } from "../store/actions";
 import {toast} from "react-toastify";
-
+import * as services from "../services";
 
 class LoginPage extends React.PureComponent{
 
@@ -24,14 +24,7 @@ class LoginPage extends React.PureComponent{
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("/api/v1/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state),
-        })
-        .then(res => res.json())
+        services.login(this.state)
         .then(this.handleSuccess)
         .catch(err =>{
             toast.error("Sisselogimisel tekkis viga");
@@ -40,9 +33,10 @@ class LoginPage extends React.PureComponent{
         });
     };
 
-    handleSuccess = ({user}) =>{
+    handleSuccess = ({token, user}) =>{
         toast.success("Oled sisse logitud");
         this.props.dispatch(userUpdate(user));
+        this.props.dispatch(tokenUpdate(token));
         this.props.history.push(`/users/${user._id}`);
     };
 
@@ -55,27 +49,27 @@ class LoginPage extends React.PureComponent{
     render(){
         return(
             <div className="login">
-            <h1 id="header">Login</h1>
+            <h1 id="header">Sisselogimine</h1>
             <form id="form" onSubmit={this.handleSubmit}>
                 <input 
                     type="email" 
-                    placeholder="Email" 
+                    placeholder="Meiliaadress" 
                     name="email"
                     value={this.state.email}
                     onChange={this.handleChange}
                     autoComplete="off" required/>
                 <input 
                     type="password" 
-                    placeholder="Password" 
+                    placeholder="Salasõna" 
                     name="password"
                     value={this.state.password}
                     onChange={this.handleChange} required/>
                 <input 
                     type="submit" 
-                    value="Login" 
+                    value="Logi sisse" 
                     onChange={this.handleChange}/>
             </form>
-                <br/><p>Don't have an account? <br/> <Link to="/signup">Create one here!</Link></p>
+                <br/><p>Pole kasutajat? <br/> <Link to="/signup">Registreeri siin!</Link></p>
             </div>
         );
     }

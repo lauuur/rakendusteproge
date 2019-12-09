@@ -50,6 +50,7 @@ userSchema.statics.login = function({email, password}){
                     email: userDoc.email,
                     createdAt: userDoc.createdAt,
                     _id: userDoc._id,
+                    cart: userDoc.cart,
                 });
             });
         });

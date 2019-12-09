@@ -1,3 +1,7 @@
+import * as services from "../services";
+import * as selectors from "./selectors";
+import {toast} from "react-toastify";
+
 export const ITEMS_SUCCESS = "ITEMS_SUCCESS";
 export const ITEMS_REQUEST = "ITEMS_REQUEST";
 export const ITEMS_FAILURE = "ITEMS_FAILURE";
@@ -6,22 +10,55 @@ export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
 
-export const getItems = () => (dispatch, getState) => {
-
-  if(getState().items.length > 0) return null;
-
-  dispatch(itemsRequest());
-  return fetch("/api/v1/items")
-    .then(res => {
-      return res.json();
-    })
-  .then(items => {
-    dispatch(itemsSuccess(items));
+export const addItem = (item) => (dispatch, getState) => {
+  const store = getState();
+  const itemId = item._id;
+  const token = selectors.getToken(store);
+  const userId = selectors.getUser(store)._id;
+  services.addItemToCart({itemId, token, userId})
+  .then(() => {
+      toast.success("Toode edukalt lisatud");
+      dispatch({
+          type: ITEM_ADDED,
+          payload: itemId,
+      });
   })
-    .catch(err => {
+  .catch(err => {
+      console.error(err);
+      toast.error("Toote lisamine ebaõnnestus!");
+  });
+};
+
+export const removeItem = (itemId) => (dispatch, getState) =>{
+  const store = getState();
+  const token = selectors.getToken(store);
+  const userId = selectors.getUser(store)._id;
+  services.removeItemFromCart({itemId, token, userId})
+    .then( () => {
+      toast.success("Toode edukalt eemaldatud");
+      dispatch({
+        type: ITEM_REMOVED,
+        payload: itemId,
+      });
+    })
+    .catch( err =>{
       console.log(err);
-      dispatch(itemsFailure());
+      toast.error("Toote eemaldamine ebaõnnestus!");
     });
+};
+
+export const getItems = () => (dispatch, getState) => {
+  const store = getState();
+  if(selectors.getItems(store).length > 0) return null;
+  dispatch(itemsRequest());
+  return services.getItems()
+    .then(items => {
+      dispatch(itemsSuccess(items));
+    })
+      .catch(err => {
+        console.log(err);
+        dispatch(itemsFailure());
+      });
 };
 
 export const itemsSuccess = (items) => ({
@@ -35,17 +72,6 @@ export const itemsRequest = () => ({
 
 export const itemsFailure = () => ({
   type: ITEMS_FAILURE,
-});
-
-
-export const addItem = (item) => ({
-  type: ITEM_ADDED,
-  payload: item,
-});
-
-export const removeItem = (_id) => ({
-  type: ITEM_REMOVED,
-  payload: _id,
 });
 
 export const userUpdate = (user) => ({

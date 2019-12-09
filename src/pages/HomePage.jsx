@@ -7,6 +7,7 @@ import "./homepage.css";
 import {connect} from "react-redux";
 import {getItems} from "../store/actions.js";
 import {ItemProps} from "./CartPage.jsx";
+import * as selectors from "../store/selectors";
 
 class HomePage extends React.PureComponent{
 
@@ -82,7 +83,7 @@ class HomePage extends React.PureComponent{
                     isSelected={this.isSelected}
                     />
                     <div className="found-items">
-                        Found: {items.length} {" "}
+                        {items.length} {" "}
                         {this.state.selectedCategories.join(", ")}
                     </div>
                     <div className="dropdown-items">
@@ -125,7 +126,7 @@ ItemFilters.propTypes = {
 
 const mapStateToProps = (store) =>{
     return{
-        items: store.items,
+        items: selectors.getItems(store)
     };
 };
 

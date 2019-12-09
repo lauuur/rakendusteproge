@@ -5,6 +5,7 @@ import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {addItem} from "../store/actions.js";
 import {toast} from "react-toastify";
+import * as services from "../services";
 
 class ItemPage extends React.PureComponent{
   
@@ -22,10 +23,7 @@ class ItemPage extends React.PureComponent{
     }
 
     fetchItem = () => {
-        fetch(`/api/v1/items/${this.props.match.params.itemId}`)
-        .then(res =>{
-            return res.json();
-        })
+      services.getItem({itemId: this.props.match.params.itemId})
         .then(item =>{
             this.setState({
                 ...item
@@ -38,7 +36,6 @@ class ItemPage extends React.PureComponent{
 
     handleBuy = () => {
       this.props.dispatch(addItem(this.state));
-      toast.success("Toode lisatud ostukorvi");
     };
   
 
@@ -66,6 +63,7 @@ class ItemPage extends React.PureComponent{
                  </div>
                </div>
              </div>
+            <div className={"itemPage-left"}>{`(${getRandomIntInclusive(0,1000)} hinnangut)`}</div>
           <div className={"itemPage-footer"}>
             <FancyButton onClick={this.handleBuy}>Lisa toode ostukorvi</FancyButton>
           </div>
@@ -75,7 +73,13 @@ class ItemPage extends React.PureComponent{
     }
 }
 
-const loremIpsum = "This is an item";
+function getRandomIntInclusive(min,max){
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max-min+1)) + min;
+}
+
+const loremIpsum = "See on üks hea toode";
 
 ItemPage.propTypes = {
     match: PropTypes.object.isRequired,

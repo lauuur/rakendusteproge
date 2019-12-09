@@ -49,10 +49,14 @@
     color: darkred;
     font-size: 16px;
     font-weight: bold;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 1px;
 }
 .item__reviews{
     color: black;
     font-size: 12px;
+    margin-top: 5px;
 }
 @media (max-width: 1000px) {
     .item{
@@ -77,5 +81,8 @@
     .item__footer{
         display: block;
         bottom: 0;
+    }
+    .item__price{
+        border: none;
     }
 }
