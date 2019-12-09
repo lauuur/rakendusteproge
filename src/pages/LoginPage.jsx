@@ -1,9 +1,9 @@
 import React from "react";
 import "./form.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import { tokenUpdate, userUpdate } from "../store/actions";
+import {tokenUpdate, userUpdate} from "../store/actions";
 import {toast} from "react-toastify";
 import * as services from "../services";
 
@@ -29,7 +29,6 @@ class LoginPage extends React.PureComponent{
         .catch(err =>{
             toast.error("Sisselogimisel tekkis viga");
             console.log("error:", err);
-
         });
     };
 

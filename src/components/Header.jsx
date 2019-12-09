@@ -5,7 +5,7 @@ import {profileIcon, cartIcon} from "../icons.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ItemProps} from "../pages/CartPage.jsx";
-import { UserPropTypes } from "../store/reducer";
+import {UserPropTypes} from "../store/reducer";
 import * as selectors from "../store/selectors";
 
 const Header = ({user, cart}) => {
@@ -22,8 +22,8 @@ const Header = ({user, cart}) => {
         <Link className="header__button" to="/checkout/cart">
         <img src={cartIcon}/>
         <div className="header__button-text">Ostukorv</div>
-        <Badge>{cart.length}</Badge>
         </Link>
+        <Badge>{cart.length}</Badge>
       </div>
     </div>
     );

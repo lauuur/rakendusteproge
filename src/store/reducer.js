@@ -2,7 +2,6 @@ import{
     ITEMS_SUCCESS, ITEMS_REQUEST, ITEMS_FAILURE, ITEM_ADDED, ITEM_REMOVED, USER_UPDATE, TOKEN_UPDATE
 } from "./actions.js";
 import PropTypes from "prop-types";
-// import { addItemToCart } from "../services.js";
 
 export const UserPropTypes = {
   _id: PropTypes.string.isRequired,
@@ -17,7 +16,6 @@ const initialState = {
   items: [],
 };
   
-
 export const reducer = (state=initialState, action) =>{
     switch(action.type){
       case TOKEN_UPDATE:
@@ -71,11 +69,3 @@ const removeItemFromCart = (user, itemId) => {
       cart: cartCopy
   };
 };
-
-// const removeItemById = (items, _id) => {
-//     const index = items.findIndex(item => item._id === _id);
-//     if(index === -1) return items;
-//     const copy = items.slice();
-//     copy.splice(index, 1);
-//     return copy;
-// };

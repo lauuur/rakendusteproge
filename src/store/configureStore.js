@@ -1,8 +1,7 @@
 import {createStore, applyMiddleware} from "redux";
-import logger from "redux-logger";
 import thunk from "redux-thunk";
 import {reducer} from "./reducer.js";
-import { persistStore, persistReducer } from "redux-persist";
+import {persistStore, persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 const persistConfig = {
@@ -13,7 +12,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 export default () => {
-  let store = createStore(persistedReducer, applyMiddleware(thunk, logger));
+  let store = createStore(persistedReducer, applyMiddleware(thunk));
   let persistor = persistStore(store);
   return { store, persistor };
 };

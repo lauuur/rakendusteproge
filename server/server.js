@@ -54,11 +54,11 @@ function migrate(){
   });
 }
 
-function deleteAllItems(){
-  Item.deleteMany({}, (err, doc) =>{
-    console.log("err:", err, "doc:", doc);
-  });
-}
+// function deleteAllItems(){
+//   Item.deleteMany({}, (err, doc) =>{
+//     console.log("err:", err, "doc:", doc);
+//   });
+// }
 
 function saveAllItems(){
   console.log("migrate start");
@@ -75,5 +75,3 @@ function saveAllItems(){
   });
   console.log("items: ", items);
 }
-
- 

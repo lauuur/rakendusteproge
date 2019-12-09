@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import authConsumer from "../components/authConsumer.jsx";
 import protectedRedirect from "../components/protectedRedirect.jsx";
-import { connect } from "react-redux";
-import { UserPropTypes } from "../store/reducer.js";
+import {connect} from "react-redux";
+import {UserPropTypes} from "../store/reducer.js";
 import FancyButton from "../components/FancyButton.jsx";
 import {userUpdate, tokenUpdate} from "../store/actions.js";
 import {toast} from "react-toastify";

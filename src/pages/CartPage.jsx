@@ -1,5 +1,5 @@
 import React from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
+import {FaRegTrashAlt} from "react-icons/fa";
 import "../components/cart.css";
 import PropTypes from "prop-types";
 import FancyButton from "../components/FancyButton.jsx";
@@ -8,7 +8,6 @@ import {removeItem} from "../store/actions.js";
 import {toast} from "react-toastify";
 import * as selectors from "../store/selectors";
 import * as services from "../services";
-
 
 class CartPage extends React.PureComponent{
 
@@ -44,10 +43,9 @@ class CartPage extends React.PureComponent{
     })
       .catch(err =>{
         console.log(err);
-        toast.error("Failed fetching items");
+        toast.error("Toodete leidmine ebaõnnestus!");
       });
   };
-
 
   calcNumbers = () =>{
     const VAT = 20;
@@ -62,34 +60,35 @@ class CartPage extends React.PureComponent{
     this.props.dispatch(removeItem(_id));
   };
 
-    render(){
-      const {sum, tax} = this.calcNumbers();
-        return (
-          <div className={"spacer"}>
-            <div className={"box cart"}>
-              <Table
-                onTrash={this.handleTrash}
-                rows={this.state.cartItems}
-                />
-            </div>
-            <div className={"box cart__summary"}>
-              <table>
-                <tbody>
-                <tr><td>Summa</td><td>{sum}€</td></tr>
-                <tr><td>Käibemaks</td><td>{tax}€</td></tr>
-                <tr><td>Kokku</td><td>{tax+sum}€</td></tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <FancyButton onClick={() => console.log("Ost vormistatud :)")}>Vormista ost</FancyButton>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+  render(){
+    const {sum, tax} = this.calcNumbers();
+      return (
+        <div className={"spacer"}>
+          <div className={"box cart"}>
+            <Table
+              onTrash={this.handleTrash}
+              rows={this.state.cartItems}
+              />
           </div>
-        );
-      }
+          <br/>
+          <div className={"box cart__summary"}>
+            <table>
+              <tbody>
+              <tr><td>Summa</td><td>{sum}€</td></tr>
+              <tr><td>Käibemaks</td><td>{tax}€</td></tr>
+              <tr><td>Kokku</td><td>{tax+sum}€</td></tr>
+              <tr>
+                <td></td>
+                <td>
+                  <FancyButton onClick={() => toast("Ostu vormistamine on arendamisel :)")}>Vormista ost</FancyButton>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }
 }
 
 const Table = ({rows, onTrash}) => {

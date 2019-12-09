@@ -9,13 +9,11 @@
     display: inline-block;
     border-radius: 4px;
 }
-
 .btn--fancy:hover{
     cursor: pointer;
-    background: blue;
+    box-shadow: 0 0 3px 3px black;
     transition: all .2s ease-in-out;
 }
-
 .btn-inner{
     display: flex;
     align-items: center;

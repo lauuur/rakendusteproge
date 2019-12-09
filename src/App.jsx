@@ -6,10 +6,9 @@ import "typeface-roboto";
 import "./pages/main.css";
 import configureStore from "./store/configureStore.js";
 import {Provider} from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import {PersistGate} from "redux-persist/integration/react";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const {store, persistor} = configureStore();
 
@@ -31,7 +30,6 @@ class App extends React.Component{
                 <Route path="/checkout/cart" exact component={Pages.CartPage}/>
                 <Route component={Pages.NotFound}/>
                 </Switch>
-                
               </BrowserRouter>
           </PersistGate>
         </Provider>

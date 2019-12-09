@@ -1,7 +1,6 @@
 const User = require("./user.model.js");
 const jwt = require("jsonwebtoken");
 
-
 exports.login = (req, res) =>{
     User.login(req.body)
     .then(user =>{

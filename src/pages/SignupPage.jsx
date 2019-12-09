@@ -1,6 +1,6 @@
 import React from "react";
 import "./form.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {toast} from "react-toastify";
 import * as services from "../services";

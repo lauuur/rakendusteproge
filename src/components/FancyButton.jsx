@@ -1,5 +1,5 @@
 import React from "react";
-import { FaAngleRight } from "react-icons/fa";
+import {FaAngleRight} from "react-icons/fa";
 import "./fancybutton.css";
 import PropTypes from "prop-types";
 
